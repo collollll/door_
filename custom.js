@@ -1409,7 +1409,7 @@ ScrollTrigger.matchMedia({
           pinSpacing: false,
           scrub: 1,
           // toggleActions: "play none reverse none",
-          markers: true,
+          // markers: true,
 
           onUpdate: (self) => {
             // again = false;
@@ -1603,7 +1603,7 @@ ScrollTrigger.matchMedia({
           start: "-5% top",
           // toggleActions: "play reverse play reverse",
           toggleActions: "play complete play reset",
-          markers: true,
+          // markers: true,
 
           // onLeaveBack: () => {
           //   console.log("벗어남 - 즉시 리셋");
@@ -2000,7 +2000,7 @@ let contactTrigger = gsap.timeline({
     // snap: 1,
     // toggleActions: "play none none reverse",
     // invalidateOnRefresh: true, // ✅ 추가
-    markers: true,
+    // markers: true,
 
     onUpdate: (self) => {
       // progress가 1에 가까워지면 카드 중앙 도착으로 간주

@@ -7,6 +7,7 @@
   font-family: "Rische";
   src: url(font/rische-demo.otf);
 }
+
 @font-face {
   font-family: "BlackerSans";
   src: url(font/BlackerSansDisplayTrial-Black.ttf);
@@ -85,7 +86,7 @@ body {
   word-break: keep-all;
 
   /* font-family: "Rische"; */
-  /* overflow-x: hidden; */
+  overflow-x: hidden;
   /* font-family: "Noto Sans KR", sans-serif; */
   font-family: "Pretendard", sans-serif;
   font-optical-sizing: auto;
@@ -1721,11 +1722,17 @@ header ul {
 
 @media (max-width: 720px) {
 /* main 섹션 */
+
+/* main_스티커_삼각형 */
 #main .images .tri {
   left: -45px;
   top: -25px;
 }
 
+/* main_중앙 이미지 */
+#main .mainPic {
+  width: 75%;
+}
 
   /* about 섹션 */
   #about {
@@ -1788,6 +1795,9 @@ header ul {
   /*  */
 
   /* project 섹션 */
+#project .spacer {
+  padding-bottom: 1000px;
+}
 
   /* project_이너 컨텐츠 */
   #project .contain {
