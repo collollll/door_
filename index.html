@@ -1,0 +1,667 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <link rel="stylesheet" href="style.css" />
+
+    <script src="js/jquery-3.7.1.min.js"></script>
+    <script src="js/jquery-ui.min.js"></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery-simplyscroll/2.1.1/jquery.simplyscroll.min.js"
+      integrity="sha512-i8BU+cmsrlyKOPFSCdO4x4wHXvjg6YIXy6K/PsPL0/3F89ccSgk06wDBP5FTyiGDzVNADQhal1dA1DHH2JB0Rw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/ScrollTrigger.min.js"></script>
+    <script src="https://unpkg.com/split-type"></script>
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+    />
+
+    <!-- <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap"
+      rel="stylesheet"
+    /> -->
+    <!-- <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css"
+    /> -->
+  </head>
+  <body>
+    <!-- 251205 시작 -->
+    <!-- <header>
+      <h1>
+        <a>
+          <img />
+        </a>
+      </h1>
+      <nav>
+        <ul>
+          <li>ABOUT</li>
+          <li>PROJECT</li>
+          <li>WORK</li>
+          <li>DESIGN</li>
+          <li>CONTACT</li>
+        </ul>
+      </nav>
+    </header> -->
+
+    <div class="fixNavi">
+      <ul>
+        <li class="on">
+          <h4>MAIN</h4>
+          <img src="img/Portal (4).png" alt="" class="fixImg look" />
+          <img src="img/Portal (1).png" alt="" class="fixImg hide" />
+          <!-- <div class="test"></div> -->
+        </li>
+        <li>
+          <h4>ABOUT</h4>
+          <img src="img/Portal (4).png" alt="" class="fixImg look" />
+          <img src="img/Portal (1).png" alt="" class="fixImg hide" />
+          <!-- <div class="test"></div> -->
+        </li>
+        <li>
+          <h4>PROJECT</h4>
+          <img src="img/Portal (4).png" alt="" class="fixImg look" />
+          <img src="img/Portal (1).png" alt="" class="fixImg hide" />
+          <!-- <div class="test"></div> -->
+        </li>
+        <li>
+          <h4>WORK</h4>
+          <img src="img/Portal (4).png" alt="" class="fixImg look" />
+          <img src="img/Portal (1).png" alt="" class="fixImg hide" />
+          <!-- <div class="test"></div> -->
+        </li>
+        <li>
+          <h4>DESIGN</h4>
+          <img src="img/Portal (4).png" alt="" class="fixImg look" />
+          <img src="img/Portal (1).png" alt="" class="fixImg hide" />
+          <!-- <div class="test"></div> -->
+        </li>
+        <li>
+          <h4>CONTACT</h4>
+          <img src="img/Portal (4).png" alt="" class="fixImg look" />
+          <img src="img/Portal (1).png" alt="" class="fixImg hide" />
+          <!-- <div class="test"></div> -->
+        </li>
+      </ul>
+    </div>
+
+    <section id="main">
+      <div class="images">
+        <div class="tri">
+          <!-- <img src="img/main_tri.png" alt="" /> -->
+          <img src="img/tri.png" alt="" />
+        </div>
+        <img src="img/main_bars.png" alt="" />
+        <div class="circle">
+          <!-- <h3>WEB PUBLISH</h3> -->
+          <!-- <img src="img/cir2.png" alt="" /> -->
+          <img src="img/cir3.png" alt="" />
+        </div>
+        <!-- <img src="img/main_cir.png" alt="" /> -->
+        <div class="square">
+          <div class="text">
+            <p>
+              OPEN<span class="white">THE</span><span class="line">DOOR</span>
+            </p>
+            <p>
+              OPEN<span class="white">THE</span><span class="line">DOOR</span>
+            </p>
+            <p>
+              OPEN<span class="white">THE</span><span class="line">DOOR</span>
+            </p>
+          </div>
+        </div>
+        <!-- <img src="img/main_squ.png" alt="" /> -->
+      </div>
+
+      <div class="mainPic">
+        <!-- <img src="img/main00.png" alt="" /> -->
+        <img src="img/Group 235.png" alt="" />
+        <img src="img/Group 236.png" alt="" />
+      </div>
+
+      <div class="scroll">
+        <p>SCROLL DOWN</p>
+        <div>
+          <div></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <h2>ABOUT ME</h2>
+      <div class="top">
+        <div class="photo">
+          <img src="img/bg1.jpg" alt="" />
+          <svg class="drawLeft">
+            <rect />
+          </svg>
+          <svg class="drawRight">
+            <rect />
+          </svg>
+        </div>
+        <div class="introduce">
+          안녕하세요 웹퍼블리셔 +++입니다. 주어진 일을 성실히 수행하며 여러
+          문제에 도전하는 것을 좋아합니다. 누구나 보기 쉽고 사용에 편리한
+          웹페이지를 만들고자 합니다.
+        </div>
+      </div>
+      <div class="middle">
+        <!-- <h4>이름</h4> -->
+        <div class="edu">
+          <h4>학력</h4>
+          <div class="box">
+            <div class="boxLine"></div>
+            <p>
+              2020.03 ~ 2025.02<br />
+              +++대학교 졸업
+            </p>
+            <p>
+              2025.06 ~ 2025.12<br />
+              MBC 아카데미 ~ 수료
+            </p>
+          </div>
+        </div>
+        <div class="certi">
+          <h4>자격증</h4>
+          <div class="box">
+            <div class="boxLine"></div>
+            <p>
+              2021.04 <br />
+              컴퓨터활용능력 1급
+            </p>
+            <p>
+              2025.09 <br />
+              GTQ 1급
+            </p>
+            <p>
+              2025.12 <br />
+              웹디자인기능사
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="bottom">
+        <!-- <div class="bottomInner"> -->
+        <ul class="line lineLeft">
+          <!-- <li><img src="img/css_logo.svg" alt="" /></li> -->
+          <!-- <li><img src="img/figma_logo.svg" alt="" /></li> -->
+          <li><img src="img/HTML_logo.svg" alt="" /></li>
+          <li><img src="img/css_logo.svg" alt="" /></li>
+          <li><img src="img/javascript_logo.svg" alt="" /></li>
+          <li><img src="img/jquery_logo.svg" alt="" /></li>
+          <li><img src="img/gsap2.png" alt="" /></li>
+          <!-- <li><img src="img/reactjs.svg" alt="" /></li> -->
+          <li><img src="img/GitHub_Invert.png" alt="" /></li>
+          <li><img src="img/visual-studio-code_logo.png" alt="" /></li>
+          <li><img src="img/firebase.svg" alt="" /></li>
+          <li><img src="img/Group 1.png" alt="" /></li>
+          <li><img src="img/photoshop_logo.png" alt="" /></li>
+          <li><img src="img/illustrator_logo.png" alt="" /></li>
+          <li><img src="img/after-effects_logo.svg" alt="" /></li>
+          <li><img src="img/Premiere_logo.svg" alt="" /></li>
+        </ul>
+        <!-- <ul class="line lineRight">
+          <li><img src="img/css-3.svg" alt="" /></li>
+          <li><img src="img/photoshop_logo.png" alt="" /></li>
+          <li><img src="img/javascript_logo.svg" alt="" /></li>
+          <li><img src="img/illustrator_logo.png" alt="" /></li>
+          <li><img src="img/after-effects_logo.svg" alt="" /></li>
+          <li><img src="img/visual-studio-code_logo.png" alt="" /></li>
+          <li><img src="img/firebase.svg" alt="" /></li>
+        </ul> -->
+        <!-- </div> -->
+      </div>
+      <!--배경 원 이미지-->
+      <img src="" alt="" />
+      <img src="" alt="" />
+    </section>
+
+    <section id="project">
+      <h2>PROJECT</h2>
+      <div class="projectList">
+        <p class="subTitle">01</p>
+        <div class="contain">
+          <a href="https://collollll.github.io/find-treasure/" target="_blank">
+            <img src="img/project_treasure.png" alt=""
+          /></a>
+          <div class="textBox">
+            <h3>Find Treasure</h3>
+            <p>#HTML #CSS #JS</p>
+            <div class="buttons">
+              <button class="process">
+                <a href="Find Treasure 기획서.pdf" target="_blank">기획서</a>
+              </button>
+              <button class="process go">
+                <a
+                  href="https://collollll.github.io/find-treasure/"
+                  target="_blank"
+                >
+                  <i class="fa-solid fa-arrow-up-right-from-square"></i
+                ></a>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="spacer"></div>
+
+      <div class="projectList">
+        <p class="subTitle">02</p>
+        <div class="contain">
+          <a href="https://collollll.github.io/todolist/" target="_blank">
+            <img src="img/project_todo.png" alt=""
+          /></a>
+          <div class="textBox">
+            <h3>ToDo List</h3>
+            <p>#HTML #CSS #JS</p>
+            <div class="buttons">
+              <button class="process">
+                <a href="ToDo List 기획서.pdf" target="_blank">기획서</a>
+              </button>
+              <button class="process go">
+                <a href="https://collollll.github.io/todolist/" target="_blank">
+                  <i class="fa-solid fa-arrow-up-right-from-square"></i
+                ></a>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="spacer"></div>
+
+      <div class="projectList">
+        <p class="subTitle">03</p>
+        <div class="contain">
+          <a href="https://collollll.github.io/movieboard/" target="_blank">
+            <img src="img/project_movie.png" alt=""
+          /></a>
+          <div class="textBox">
+            <h3>Movie Board</h3>
+            <p>#HTML #CSS #JS</p>
+            <div class="buttons">
+              <button class="process">
+                <a href="Movie Board 기획서.pdf" target="_blank">기획서</a>
+              </button>
+              <button class="process go">
+                <a
+                  href="https://collollll.github.io/movieboard/"
+                  target="_blank"
+                >
+                  <i class="fa-solid fa-arrow-up-right-from-square"></i
+                ></a>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="spacer"></div>
+
+      <div class="projectList">
+        <p class="subTitle">04</p>
+        <div class="contain">
+          <a href="https://collollll.github.io/weather/" target="_blank">
+            <img src="img/project_weather.png" alt="" />
+          </a>
+          <div class="textBox">
+            <h3>Weather</h3>
+            <p>#HTML #CSS #JS</p>
+            <div class="buttons">
+              <button class="process">
+                <a href="Weather 기획서.pdf" target="_blank">기획서</a>
+              </button>
+              <button class="process go">
+                <a href="https://collollll.github.io/weather/" target="_blank">
+                  <i class="fa-solid fa-arrow-up-right-from-square"></i
+                ></a>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="spacer"></div>
+
+      <div id="cursor">Go</div>
+    </section>
+
+    <section id="work">
+      <h2>WORK</h2>
+      <div class="all">
+        <div class="wrap">
+          <ul class="workList">
+            <li class="card">
+              <!-- <img src="img/2150188314.jpg" /> -->
+              <img src="img/de2.png" />
+              <!-- <p>카페 홈페이지 디자인</p> -->
+              <p>Cafe Website</p>
+            </li>
+            <li class="card">
+              <!-- <img src="img/2150720800.jpg" /> -->
+              <img src="img/de3.png" />
+              <p>Movie Website</p>
+            </li>
+            <li class="card">
+              <!-- <img src="img/23.png" alt="" /> -->
+              <img src="img/de5.png" alt="" />
+              <p>J-Puppet Renewal Project</p>
+            </li>
+            <li class="card">
+              <img src="img/사진1.jpg" alt="" />
+              <p>2025 Korea Art Festival</p>
+            </li>
+            <!-- <li class="card">5</li> -->
+          </ul>
+
+          <img src="img/work cir 2.png" alt="" class="workCir1" />
+          <img src="img/work cir 2.png" alt="" class="workCir2" />
+        </div>
+      </div>
+      <div class="workModal">
+        <div class="modalText">
+          <video src="img/cafe.mp4" loop muted autoplay></video>
+          <div class="right">
+            <h3>
+              Cafe Website
+              <span>
+                <a href="https://collollll.github.io/cafe/" target="_blank">
+                  <i class="fa-solid fa-arrow-up-right-from-square"></i> </a
+              ></span>
+            </h3>
+            <!-- <h4>기획의도</h4> -->
+            <h4>프로젝트 개요</h4>
+            <!-- <p>
+              '공차'를 비롯한 기존의 여러 카페 홈페이지를 레퍼런스로 하여
+              직관적이고 깔끔한 디자인을 구현했습니다. 사용자로 하여금 카페 메뉴
+              등의 주요 정보가 명확하게 전달되도록 구성했으며, 반응형 디자인을
+              적용하여 다양한 기기에서 편리하게 이용할 수 있도록 하였습니다.
+            </p> -->
+            <p>
+              카페 브랜드 웹사이트를 레퍼런스로 하여 메뉴와 주요 콘텐츠를
+              직관적으로 탐색할 수 있는 구조의 메인 페이지를 기획했습니다. 카페
+              메뉴가 시각적으로 돋보일 수 있도록 이미지 중심의 레이아웃을
+              구성하였습니다.
+            </p>
+            <h4>주요 기능</h4>
+            <p>
+              - 이미지 중심의 카드형 UI와 카테고리 전환이 가능한 메뉴 탭 구현
+              <br />
+              - IntersectionObserver를 활용한 콘텐츠 순차 등장 애니메이션 구현
+            </p>
+            <h4>작업기간</h4>
+            <p>8일</p>
+            <h4>기여도</h4>
+            <p>100%</p>
+            <h4>사용툴</h4>
+            <p>HTML, CSS, JS, jQuery</p>
+            <h4>반응형</h4>
+            <p>PC, Tablet, Mobile</p>
+          </div>
+          <i class="fas fa-times close"></i>
+        </div>
+        <div class="modalText">
+          <video src="img/movie.mp4" loop muted autoplay></video>
+          <div class="right">
+            <h3>
+              Movie Website
+              <span>
+                <a href="https://collollll.github.io/movie/" target="_blank"
+                  ><i class="fa-solid fa-arrow-up-right-from-square"></i></a
+              ></span>
+            </h3>
+            <h4>프로젝트 개요</h4>
+            <p>
+              영화 관련 웹사이트를 레퍼런스로 하여 상영작과 프로그램 정보를
+              중심으로 한 영화 웹사이트 메인페이지를 구현했습니다. 섹션별로
+              버튼과 링크를 배치해 관련 콘텐츠를 쉽게 탐색할 수 있도록
+              구성했습니다.
+            </p>
+            <h4>주요 기능</h4>
+            <p>
+              - jQuery animate를 활용한 자동 비주얼 슬라이드 구현
+              <br />
+              - Hover 애니메이션을 활용한 도형 요소 인터랙션
+            </p>
+            <h4>작업기간</h4>
+            <p>6일</p>
+            <h4>기여도</h4>
+            <p>100%</p>
+            <h4>사용툴</h4>
+            <p>HTML, CSS, JS, jQuery</p>
+            <h4>반응형</h4>
+            <p>PC, Tablet, Mobile</p>
+          </div>
+          <i class="fas fa-times close"></i>
+        </div>
+        <div class="modalText">
+          <video src="img/jpuppet.mp4" loop muted autoplay></video>
+          <div class="right">
+            <h3>
+              J-Puppet Renewal Project
+              <span>
+                <a href="3조_드림퍼펫_기획서.pdf" target="_blank">
+                  <i class="fa-regular fa-file-lines"></i
+                ></a>
+                <a href="https://hijhye.github.io/dreamPuppet/" target="_blank">
+                  <i class="fa-solid fa-arrow-up-right-from-square"></i> </a
+              ></span>
+            </h3>
+            <h4>프로젝트 개요</h4>
+            <p>
+              기존 제이퍼펫 웹사이트의 사용자 경험과 정보 구조를 개선하기 위해
+              팀 프로젝트로 진행한 웹사이트 리뉴얼 작업입니다. 기획과 레이아웃
+              디자인은 팀원들과 협업하여 진행했으며, 서브 페이지 퍼블리싱을
+              담당했습니다.
+            </p>
+            <h4>주요 기능</h4>
+            <p>
+              - 궤도를 따라 회전하는 원형 요소 및 키워드 클릭 시 텍스트 변경
+              기능 구현<br />
+              - SimplyScroll을 활용한 가로 자동 스크롤 및 드래그 인터랙션 구현
+            </p>
+            <h4>작업기간</h4>
+            <p>약 3주</p>
+            <h4>기여도</h4>
+            <p>20% <br /><span>서브페이지 : about 담당<br>플로팅 버튼</span></p>
+            <h4>사용툴</h4>
+            <p>HTML, CSS, JS, jQuery, GSAP</p>
+            <h4>반응형</h4>
+            <p>PC, Tablet, Mobile</p>
+          </div>
+          <i class="fas fa-times close"></i>
+        </div>
+        <div class="modalText">
+          <video src="img/cafe.mp4" loop muted autoplay></video>
+          <div class="right">
+            <h3>
+              2025 Korea Art Festival
+              <a href="#">
+                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+              </a>
+            </h3>
+            <h4>프로젝트 개요</h4>
+            <p>기존 웹사이트의 레이아웃과 주요 인터랙션을 분석하고 구현한 클론 코딩 프로젝트입니다.</p>
+             <h4>주요 기능</h4>
+            <p>
+              - 드롭다운 메뉴와 원형 확장 애니메이션의 모바일 메뉴를 포함한 반응형 헤더 구현<br />
+              - Swiper.js를 활용한 카드 슬라이드 구현
+            </p>
+            <h4>작업기간</h4>
+            <p>8일</p>
+            <h4>기여도</h4>
+            <p>100%</p>
+            <h4>사용툴</h4>
+            <p>HTML, CSS, JS, jQuery, GSAP</p>
+            <h4>반응형</h4>
+            <p>PC, Tablet, Mobile</p>
+          </div>
+          <i class="fas fa-times close"></i>
+        </div>
+      </div>
+    </section>
+
+    <section id="design">
+      <h2>DESIGN</h2>
+      <div class="pin">
+        <p>어떤 디자인을 작업했나요</p>
+      </div>
+      <div class="scroll">
+        <div></div>
+        <!-- <div></div> -->
+      </div>
+      <ul>
+        <li>
+          <img src="img/illust01.jpg" alt="" />
+          <!-- <p>1</p> -->
+        </li>
+        <li>
+          <img src="img/illust02.png" alt="" />
+          <!-- <p>2</p> -->
+        </li>
+        <li>
+          <img src="img/illust03.jpg" alt="" />
+          <!-- <p>3</p> -->
+        </li>
+        <li>
+          <img src="img/illust04.jpg" alt="" />
+          <!-- <p>4</p> -->
+        </li>
+        <li>
+          <img src="img/illust05.png" alt="" />
+          <!-- <p>5</p> -->
+        </li>
+        <li>
+          <img src="img/illust06.jpg" alt="" />
+          <!-- <p>6</p> -->
+        </li>
+      </ul>
+
+      <div class="preview">
+        <img src="" alt="" />
+      </div>
+
+      <!-- <div class="display">
+        <h3>일러 제목</h3>
+        <div>
+          <ul>
+            <li>
+              <img src="img/illust01.jpg" alt="" />
+            </li>
+            <li>
+              <img src="img/illust02.png" alt="" />
+            </li>
+            <li>
+              <img src="img/illust03.jpg" alt="" />
+            </li>
+            <li>
+              <img src="img/illust04.jpg" alt="" />
+            </li>
+            <li class="on">
+              <img src="img/illust05.png" alt="" />
+            </li>
+            <li class="on">
+              <img src="img/illust06.jpg" alt="" />
+            </li>
+          </ul>
+          <i>화살표? 넣기</i>
+        </div>
+        <p>일러 설명</p>
+      </div> -->
+    </section>
+
+    <section id="contact">
+      <div class="wrap">
+        <div class="keywords">
+          <p>Problem Solving</p>
+          <p>WEB</p>
+          <p>Reusable Code</p>
+          <p>웹 퍼블리셔</p>
+          <p>Responsive Web</p>
+          <p>User Friendly</p>
+          <p>접근성</p>
+          <p>유지보수성</p>
+          <p>UI</p>
+          <p>Detail</p>
+          <p>Experience</p>
+          <p>크로스 브라우징</p>
+
+          <p>인터랙션</p>
+          <p>Design</p>
+          <p>Challenge</p>
+
+          <p>Problem Solving</p>
+          <p>WEB</p>
+          <p>웹 퍼블리셔</p>
+          <p>Responsive Web</p>
+          <p>접근성</p>
+          <p>UI</p>
+          <p>Experience</p>
+
+          <p>Growth</p>
+          <p>Challenge</p>
+          <p>Passion</p>
+          <p>Communication</p>
+          <p>최적화</p>
+          <p>Workflow</p>
+
+          <p>Problem Solving</p>
+          <p>WEB</p>
+          <p>Reusable Code</p>
+          <p>웹 퍼블리셔</p>
+          <p>Responsive Web</p>
+          <p>User Friendly</p>
+          <p>접근성</p>
+          <p>유지보수성</p>
+          <p>UI</p>
+          <p>Detail</p>
+          <p>Experience</p>
+          <p>크로스 브라우징</p>
+
+          <p>Growth</p>
+          <p>Challenge</p>
+          <p>Passion</p>
+          <p>Communication</p>
+          <p>최적화</p>
+          <p>Workflow</p>
+        </div>
+        <div class="boxs">
+          <div class="block"></div>
+          <div class="block"></div>
+          <div class="block"></div>
+          <div class="block"></div>
+          <div class="block"></div>
+          <div class="block"></div>
+          <div class="block"></div>
+          <div class="block"></div>
+          <div class="block"></div>
+          <div class="block"></div>
+          <div class="block"></div>
+          <div class="block"></div>
+        </div>
+        <div class="cardWrap">
+          <div class="card">
+            <h3>CONTACT</h3>
+            <p>궁금한 점이 있다면 언제든 연락주세요!</p>
+            <div>
+              <p>hck2061@naver.com</p>
+              <p>010-9280-6279</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <script src="custom.js"></script>
+    <!-- <script src="custom2_260205.js"></script> -->
+    <!-- <script src="work3_260208.js"></script> -->
+    <!-- <script src="custom_pro_260215.js"></script> -->
+  </body>
+</html>
