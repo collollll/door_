@@ -1,13 +1,12 @@
 <!doctype html>
-<html lang="en">
+<html lang="ko">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>HJ's PORTFOLIO</title>
 
     <!-- js -->
     <script src="js/jquery-3.7.1.min.js"></script>
-    <script src="js/jquery-ui.min.js"></script>
     <script
       src="https://cdnjs.cloudflare.com/ajax/libs/jquery-simplyscroll/2.1.1/jquery.simplyscroll.min.js"
       integrity="sha512-i8BU+cmsrlyKOPFSCdO4x4wHXvjg6YIXy6K/PsPL0/3F89ccSgk06wDBP5FTyiGDzVNADQhal1dA1DHH2JB0Rw=="
@@ -26,14 +25,30 @@
     />
   </head>
   <body>
-    <section id="main">
-      <div class="images">
-        <div class="tri">
-          <img src="img/tri.png" alt="메인 삼각형 이미지" />
+    <div id="loader">
+      <div class="loaderBg"></div>
+      <div class="loaderContent">
+        <p class="loaderTop">
+          Behind this door<br />
+          is a publisher<br />
+          ready to turn ideas<br />
+          into meaningful experiences.
+        </p>
+        <div class="loaderBottom">
+          <img src="img/open-door.png" alt="" />
+          <p class="loaderPercent">0%</p>
         </div>
-        <img src="img/bars.png" alt="메인 타원 이미지" />
+      </div>
+    </div>
+
+    <section id="main" aria-label="메인 소개 섹션">
+      <div class="images" aria-hidden="true">
+        <div class="tri">
+          <img src="img/tri.png" alt="" />
+        </div>
+        <img src="img/bars.png" alt="" />
         <div class="circle">
-          <img src="img/cir.png" alt="메인 원형 텍스트" />
+          <img src="img/cir.png" alt="" />
         </div>
         <div class="square">
           <div class="text">
@@ -50,13 +65,13 @@
         </div>
       </div>
 
-      <div class="mainPic">
-        <img src="img/main1.png" alt="메인 이미지1" />
-        <img src="img/main2.png" alt="메인 이미지2" />
+      <div class="mainPic" tabindex="0">
+        <img src="img/main1.png" alt="포트폴리오 메인 비주얼 이미지" />
+        <img src="img/main2.png" alt="" />
       </div>
 
       <div class="scroll">
-        <p>SCROLL DOWN</p>
+        <p>scroll down</p>
         <div>
           <div></div>
         </div>
@@ -274,7 +289,6 @@
               <img src="img/work_art.jpg" alt="2025 미술축제 이미지" />
               <p>2025 Korea Art Festival</p>
             </li>
-            <!-- <li class="card">5</li> -->
           </ul>
 
           <img src="img/work_cir.png" alt="" class="workCir1" />
@@ -623,8 +637,5 @@
     </div>
 
     <script src="custom.js"></script>
-    <!-- <script src="work_260406.js"></script> -->
-    <!-- <script src="work_260411.js"></script> -->
-    <!-- <script src="work_260412.js"></script> -->
   </body>
 </html>

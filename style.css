@@ -1,58 +1,14 @@
 /* 폰트 */
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap");
-
 @import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css");
-
-@font-face {
-  font-family: "Rische";
-  src: url(font/rische-demo.otf);
-}
 
 @font-face {
   font-family: "BlackerSans";
   src: url(font/BlackerSansDisplayTrial-Black.ttf);
 }
 @font-face {
-  /* font-family: "Noto Sans KR", sans-serif; */
-}
-/* .noto-sans-kr-<uniquifier> {
-  font-family: "Noto Sans KR", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: <weight>;
-  font-style: normal;
-} */
-
-/*  */
-/*  */
-/*  */
-
-@font-face {
   font-family: "Begies";
   src: url(font/Begies-aYm89.otf);
-}
-@font-face {
-  font-family: "Corvex";
-  src: url(font/Corvex-BL2Yl.otf);
-}
-@font-face {
-  font-family: "Brela";
-  src: url(font/CSBrela-Regular_demo-BF698852e4dc923.otf);
-}
-@font-face {
-  font-family: "Calgary";
-  src: url(font/CSCalgary-Regular_demo-BF69884359d752f.otf);
-}
-@font-face {
-  font-family: "HedricMagname";
-  src: url(font/HedricMagname-BLVm3.ttf);
-}
-@font-face {
-  font-family: "SefielyRegular";
-  src: url(font/SefielyRegular-aY2Mx.ttf);
-}
-@font-face {
-  font-family: "UtNoxdevCloseClose";
-  src: url(font/UtNoxdevCloseClose-pga6r.ttf);
 }
 @font-face {
   font-family: "UtNoxdevDemoOpen";
@@ -60,9 +16,6 @@
 }
 
 /*  */
-/*  */
-/*  */
-
 * {
   margin: 0px;
   padding: 0px;
@@ -84,10 +37,7 @@ body {
   background-color: black;
   color: white;
   word-break: keep-all;
-
-  /* font-family: "Rische"; */
   overflow-x: hidden;
-  /* font-family: "Noto Sans KR", sans-serif; */
   font-family: "Pretendard", sans-serif;
   font-optical-sizing: auto;
   line-height: 1.5;
@@ -95,33 +45,8 @@ body {
 body.modalOpen {
   overflow: hidden;
 }
-
-::-webkit-scrollbar {
-  /* width: 14px;
-  height: 14px; */
-}
-::-webkit-scrollbar-thumb {
-  /* outline: none; */
-  border-radius: 10px;
-  /* border: 4px solid transparent; */
-  /* box-shadow: inset 6px 6px 0 rgba(34, 34, 34, 0.15); */
-
-  background-color: #2e5bff;
-}
-::-webkit-scrollbar-thumb:hover {
-  border: 4px solid transparent;
-  box-shadow: inset 6px 6px 0 rgba(34, 34, 34, 0.3);
-}
-::-webkit-scrollbar-track {
-  /* box-shadow: none; */
-  /* background-color: transparent; */
-}
-
 .fixNavi {
   font-family: "Begies";
-  /* font-family: "Brela";  */
-  /* font-family: "SefielyRegular"; */
-  /* 걍 순정이 나은지?? / 일단 고르긴 했는데 셋 중 고민이 되긴 함...*/
 }
 
 /* 공통 */
@@ -148,7 +73,6 @@ section h2.active {
 
 #project .textBox h3 {
   font-family: "UtNoxdevDemoOpen";
-  /*이게 제일 나은듯?*/
   line-height: 1.2;
 }
 
@@ -158,80 +82,58 @@ section h2.active {
   padding: 10px;
 }
 
-/* header */
-header {
-  display: flex;
-  background-color: rgba(255, 255, 255, 0.5);
-  align-items: center;
+/* 로딩 화면 */
+#loader {
   position: fixed;
+  inset: 0;
+  background: black;
+  z-index: 9999;
+  overflow: hidden;
+  font-family: "Helvetica Neue", sans-serif;
 }
-header ul {
+#loader .loaderBg {
+  position: absolute;
+  inset: 0;
+  background: white;
+  transform-origin: right;
+  transform: scaleX(1);
+  will-change: transform;
+}
+#loader .loaderContent {
+  position: absolute;
+  inset: 0;
   display: flex;
-}
-
-/* fix 바로가기 */
-.fixNavi {
-  position: fixed;
-  top: 50%;
-  right: 5px;
-  transform: translateY(-50%);
-  z-index: 50;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 40px;
+  mix-blend-mode: difference;
   color: white;
   pointer-events: none;
-  font-family: "Begies";
-  letter-spacing: 2px;
+  z-index: 2;
 }
-.fixNavi li {
-  min-height: 20px;
+#loader .loaderTop {
+  font-size: clamp(11px, 1.5vw, 14px);
+  letter-spacing: 0.15em;
+  line-height: 1.7;
+  max-width: 55%;
+  font-weight: 400;
+  text-transform: uppercase;
+}
+#loader .loaderBottom {
   display: flex;
-  justify-content: right;
-  align-items: center;
-  gap: 5px;
-  margin: 5px 0px;
+  flex-direction: column;
+  text-align: center;
 }
-.fixNavi li:has(.test:hover) h4 {
-  display: block;
+#loader .loaderBottom img {
+  width: 250px;
+  margin: 0px auto;
+  filter: invert(1) drop-shadow(2px 4px 6px white);
 }
-.fixNavi li h4 {
-  display: none;
-  font-weight: bold;
-  font-size: 14px;
-  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
-}
-.fixNavi li.on h4 {
-  display: block;
-  font-weight: bold;
-  pointer-events: auto;
-  cursor: pointer;
-}
-
-/* fix 바로가기_이미지 */
-.fixNavi .fixImg {
-  width: 20px;
-  aspect-ratio: 1/1;
-  cursor: pointer;
-  pointer-events: auto;
-  display: none;
-}
-.fixNavi .hide {
-  display: block;
-  opacity: 0.8;
-}
-.fixNavi li.on .hide {
-  display: none;
-}
-.fixNavi li.on .look {
-  animation: naviRot 1.5s infinite forwards;
-  animation-play-state: running;
-  display: block;
-}
-@keyframes naviRot {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(180deg);
-  }
+#loader .loaderBottom .loaderPercent {
+  font-size: clamp(40px, 8vw, 72px);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.02em;
 }
 
 /* main */
@@ -287,6 +189,10 @@ header ul {
   transform: skewX(-20deg);
   animation: shine 2s ease-in-out infinite;
   animation-delay: 1.5s;
+  animation-play-state: paused;
+}
+#main .images .tri.ready::before {
+  animation-play-state: running;
 }
 @keyframes shine {
   100% {
@@ -302,7 +208,9 @@ header ul {
   top: 20px;
   transform: rotate(-10deg);
   animation: sticker 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  animation-play-state: paused;
 }
+
 @keyframes sticker {
   0% {
     transform: scale(0) rotate(-15deg);
@@ -335,6 +243,7 @@ header ul {
 #main .images .circle img {
   width: 75%;
   animation: cir 6s linear infinite;
+  animation-play-state: paused;
   margin: 0px auto;
 }
 @keyframes cir {
@@ -370,12 +279,14 @@ header ul {
   transform: translateY(-100%);
   animation: setOrigin 1s forwards;
   animation-delay: 0.5s;
+  animation-play-state: paused;
   opacity: 0;
 }
 #main .square .text p:nth-child(3) {
   transform: translateY(-200%);
   animation: setOrigin 1s forwards;
   animation-delay: 0.5s;
+  animation-play-state: paused;
   opacity: 0;
 }
 @keyframes setOrigin {
@@ -406,6 +317,7 @@ header ul {
   text-align: center;
   align-content: center;
   animation: opa 2s forwards;
+  animation-play-state: paused;
   opacity: 0;
 }
 @keyframes opa {
@@ -424,7 +336,8 @@ header ul {
   z-index: 2;
   transition: 0.5s;
 }
-#main .mainPic img:nth-child(1):hover {
+#main .mainPic img:nth-child(1):hover,
+#main .mainPic:focus img:nth-child(1) {
   opacity: 0;
 }
 
@@ -435,6 +348,9 @@ header ul {
   left: 50%;
   bottom: 15px;
   transform: translateX(-50%);
+}
+#main .scroll p {
+  text-transform: uppercase;
 }
 #main .scroll > div {
   --scrollHeight: 60px;
@@ -460,11 +376,7 @@ header ul {
   box-shadow: 0 3px 8px 0 rgba(0, 0, 0, 0.5);
 }
 @keyframes scroll {
-  85% {
-    transform: translateY(
-      calc((var(--scrollHeight) - var(--scrollPadding) * 2) - var(--circleSize))
-    );
-  }
+  85%,
   100% {
     transform: translateY(
       calc((var(--scrollHeight) - var(--scrollPadding) * 2) - var(--circleSize))
@@ -927,7 +839,7 @@ header ul {
 
 /* work_모달창 */
 #work .workModal {
-  width: 100vw;
+  width: 100%;
   height: 100vh;
   display: none;
   position: fixed;
@@ -1131,8 +1043,6 @@ header ul {
   top: 0;
   z-index: 0;
   inset: 0;
-  /* ? */
-  /* opacity: 0.15; */
   pointer-events: none;
 
   display: grid;
@@ -1208,6 +1118,70 @@ header ul {
   text-align: center;
   font-size: 3vw;
   font-size: 40px;
+}
+
+/* fix 바로가기 */
+.fixNavi {
+  position: fixed;
+  top: 50%;
+  right: 5px;
+  transform: translateY(-50%);
+  z-index: 50;
+  color: white;
+  pointer-events: none;
+  font-family: "Begies";
+  letter-spacing: 2px;
+}
+.fixNavi li {
+  min-height: 25px;
+  display: flex;
+  justify-content: right;
+  align-items: center;
+  gap: 5px;
+}
+.fixNavi li:has(:hover) h4 {
+  display: block;
+}
+.fixNavi li h4 {
+  display: none;
+  font-weight: bold;
+  font-size: 14px;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
+}
+.fixNavi li.on h4 {
+  display: block;
+  font-weight: bold;
+  pointer-events: auto;
+  cursor: pointer;
+}
+
+/* fix 바로가기_이미지 */
+.fixNavi .fixImg {
+  width: 20px;
+  aspect-ratio: 1/1;
+  cursor: pointer;
+  pointer-events: auto;
+  display: none;
+}
+.fixNavi .hide {
+  display: block;
+  opacity: 0.8;
+}
+.fixNavi li.on .hide {
+  display: none;
+}
+.fixNavi li.on .look {
+  animation: naviRot 1.5s infinite forwards;
+  animation-play-state: running;
+  display: block;
+}
+@keyframes naviRot {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(180deg);
+  }
 }
 
 @media (min-width: 720px) and (max-width: 1220px) {
@@ -1346,7 +1320,7 @@ header ul {
 
   /* work_모달창 */
   #work .workModal {
-    width: 100vw;
+    width: 100%;
     height: 100vh;
   }
 
@@ -1377,7 +1351,7 @@ header ul {
     /* background-color: #4a5fcc; */
   }
   #work .modalText .right::-webkit-scrollbar-track {
-    -webkit-box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.3); /*뭔데??????*/
+    -webkit-box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.3);
     border-radius: 10px;
     background-color: #f5f5f5;
     background-color: #e1d9c5;
@@ -1411,6 +1385,11 @@ header ul {
   }
   #contact .card h3 {
     font-size: clamp(33px, 3.5vw, 40px);
+  }
+
+  /* fix 바로가기 */
+  .fixNavi li.on h4 {
+    display: none;
   }
 }
 
@@ -1604,7 +1583,7 @@ header ul {
     /* background-color: #4a5fcc; */
   }
   #work .modalText .right::-webkit-scrollbar-track {
-    -webkit-box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.3); /*뭔데??????*/
+    -webkit-box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.3);
     border-radius: 10px;
     background-color: #f5f5f5;
   }
@@ -1647,15 +1626,6 @@ header ul {
     grid-template-columns: 1fr 1fr;
     gap: 40px;
   }
-
-  /* design_미리보기 이미지 */
-
-  /* scroll 삭제하기, 0
-  pin 높이 조절?, 
-  ul 3줄로?, 0
-  프리뷰 이미지 크기 애매.... -> 일단 화면 너비 300에 가까워지면 프리뷰에 max-width 70% 정도를 적용해야 할 것 같은데.. 좀 고민좀 */
-
-  /*  */
 
   /* contact */
   #contact .wrap {

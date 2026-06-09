@@ -17,6 +17,68 @@ function titleFill() {
 window.addEventListener("scroll", titleFill);
 window.addEventListener("resize", titleFill);
 
+// 로딩 화면
+const loader = document.querySelector("#loader");
+const loaderBg = document.querySelector("#loader .loaderBg");
+const loaderPercent = document.querySelector("#loader .loaderPercent");
+
+const mainImgs = document.querySelectorAll("#main img");
+const total = mainImgs.length;
+let loaded = 0;
+
+function onLoad() {
+  loaded++;
+  const progress = loaded / total;
+  loaderBg.style.transform = `scaleX(${1 - progress})`;
+  loaderPercent.textContent = Math.round(progress * 100) + "%";
+  if (loaded >= total) startSite();
+}
+
+if (total === 0) {
+  startSite();
+} else {
+  mainImgs.forEach((el) => {
+    if (el.tagName === "VIDEO") {
+      if (el.readyState >= 3) {
+        onLoad();
+      } else {
+        el.addEventListener("canplaythrough", onLoad, { once: true });
+        el.addEventListener("error", onLoad, { once: true });
+      }
+    } else {
+      if (el.complete) {
+        onLoad();
+      } else {
+        el.addEventListener("load", onLoad);
+        el.addEventListener("error", onLoad);
+      }
+    }
+  });
+}
+
+function startSite() {
+  setTimeout(() => {
+    loader.style.transition = "opacity 0.8s ease";
+    loader.style.opacity = "0";
+    loader.addEventListener("transitionend", () => loader.remove(), {
+      once: true,
+    });
+
+    [
+      "#main .images img:nth-child(2)",
+      "#main .images .circle img",
+      "#main .square .text p:nth-child(2)",
+      "#main .square .text p:nth-child(3)",
+      "#main .mainPic",
+    ].forEach((selector) => {
+      const el = document.querySelector(selector);
+      if (el) el.style.animationPlayState = "running";
+    });
+
+    document.querySelector("#main .images .tri")?.classList.add("ready");
+  }, 300);
+}
+
 //
 
 // about 섹션
@@ -27,7 +89,6 @@ let aboutAniOnce = false;
 let introduce = new SplitType("#about .introduce", {
   types: "lines",
 });
-console.log(introduce);
 
 function introduceReLine() {
   if (introduce) {
@@ -74,7 +135,7 @@ let aboutObserver = new IntersectionObserver(
     rootMargin: "-40% 0px -40% 0px",
   },
 );
-let aboutTop = about.querySelector(".top");
+// let aboutTop = about.querySelector(".top"); 🌹🌹
 aboutObserver.observe(about);
 
 // about_중앙 파트 이벤트
@@ -200,7 +261,6 @@ function dropImg() {
         ease: "power2.in", // 가속 효과
       },
     )
-
       .to(items, {
         y: -120,
         duration: 0.4,
@@ -262,88 +322,38 @@ $(window).on("scroll resize", function () {
       $(this).addClass("animated");
       $(this).find(".subTitle").addClass("down");
 
-      if (index % 2 == 0) {
-        // 홀수번째 프로젝트
-        $(textBox)
-          .find("h3")
-          .stop(true, true)
-          .delay(500)
-          .animate({ "margin-left": "0px", opacity: "1" }, function () {
-            $(textBox)
-              .find("p")
-              .stop(true, true)
-              .animate({ "margin-left": "0px", opacity: "1" }, function () {
-                $(textBox).find(".process").addClass("on");
-                $(filter).css({ filter: "brightness(105%)" });
-              });
-          });
-      } else {
-        // 짝수번째 프로젝트
-        $(textBox)
-          .find("h3")
-          .stop(true, true)
-          .delay(500)
-          .animate(
-            {
-              "margin-left": window.innerWidth <= 720 ? "0px" : "",
-              "margin-right": window.innerWidth > 720 ? "0px" : "",
-              opacity: 1,
-            },
-            function () {
-              $(textBox)
-                .find("p")
-                .stop(true, true)
-                .animate(
-                  {
-                    "margin-left": window.innerWidth <= 720 ? "0px" : "",
-                    "margin-right": window.innerWidth > 720 ? "0px" : "",
-                    opacity: 1,
-                  },
-                  function () {
-                    $(textBox).find(".process").addClass("on");
-                    $(filter).css({ filter: "brightness(105%)" });
-                  },
-                );
-            },
-          );
-      }
+      const isReverse = index % 2 !== 0 && window.innerWidth > 720; // 🌹
+      const marginProp = isReverse ? "margin-right" : "margin-left"; // 🌹
+
+      $(textBox)
+        .find("h3")
+        .stop(true, true)
+        .delay(500)
+        .animate({ [marginProp]: "0px", opacity: 1 }, function () {
+          $(textBox)
+            .find("p")
+            .stop(true, true)
+            .animate({ [marginProp]: "0px", opacity: 1 }, function () {
+              $(textBox).find(".process").addClass("on");
+              $(filter).css({ filter: "brightness(105%)" });
+            });
+        });
     } else if (proListPoint <= proListTop && $(this).hasClass("animated")) {
       // 애니메이션 초기화
       $(this).removeClass("animated");
       $(this).find(".subTitle").removeClass("down");
 
-      if (index % 2 == 0) {
-        // 홀수번째 프로젝트
-        $(textBox).find("h3").delay(500).css({
-          "margin-left": "-50px",
-          opacity: "0",
-        });
-        $(textBox).find("p").css({
-          "margin-left": "-50px",
-          opacity: "0",
-        });
-        $(textBox).find(".process").removeClass("on");
-        $(filter).css({ filter: "brightness(70%)" });
-      } else {
-        // 짝수번째 프로젝트
-        $(textBox)
-          .find("h3")
-          .delay(500)
-          .css({
-            "margin-left": window.innerWidth <= 720 ? "-50px" : "",
-            "margin-right": window.innerWidth > 720 ? "-50px" : "",
-            opacity: 0,
-          });
-        $(textBox)
-          .find("p")
-          .css({
-            "margin-left": window.innerWidth <= 720 ? "-50px" : "",
-            "margin-right": window.innerWidth > 720 ? "-50px" : "",
-            opacity: 0,
-          });
-        $(textBox).find(".process").removeClass("on");
-        $(filter).css({ filter: "brightness(70%)" });
-      }
+      const isReverse = index % 2 !== 0 && window.innerWidth > 720;
+      const marginProp = isReverse ? "margin-right" : "margin-left";
+
+      $(textBox)
+        .find("h3")
+        .css({ [marginProp]: "-50px", opacity: 0 });
+      $(textBox)
+        .find("p")
+        .css({ [marginProp]: "-50px", opacity: 0 });
+      $(textBox).find(".process").removeClass("on");
+      $(filter).css({ filter: "brightness(70%)" });
     }
   });
 });
@@ -366,27 +376,19 @@ $(function () {
 
 // work 섹션
 
-// ─────────────────────────────────────────────
-// 1. 브레이크포인트
-// ─────────────────────────────────────────────
+//
 const BP = {
   desktop: window.matchMedia("(min-width: 1220px)"),
   tablet: window.matchMedia("(min-width: 720px) and (max-width: 1219px)"),
   mobile: window.matchMedia("(max-width: 719px)"),
 };
 
-// ─────────────────────────────────────────────
-// 2. DOM
-// ─────────────────────────────────────────────
 const workSection = document.querySelector("#work");
 const workWrap = document.querySelector("#work .wrap");
 const workList = document.querySelector("#work .workList");
 const cards = document.querySelectorAll("#work .card");
 const cardCount = cards.length;
 
-// ─────────────────────────────────────────────
-// 3. 공유 상태
-// ─────────────────────────────────────────────
 const state = {
   currentRotation: 0,
   lastScrollRotation: 0,
@@ -397,9 +399,6 @@ const state = {
   dragStartRotation: 0,
 };
 
-// ─────────────────────────────────────────────
-// 4. 모드별 설정
-// ─────────────────────────────────────────────
 const modeConfig = {
   desktop: {
     rotateAxis: "Y",
@@ -411,7 +410,8 @@ const modeConfig = {
     rotateAxis: "Y",
     translateZ: 500,
     cardTranslateZ: 600,
-    clamp: [-60, 60],
+    clamp: null,
+    // clamp: [-60, 60],
   },
   mobile: {
     rotateAxis: "X",
@@ -420,15 +420,20 @@ const modeConfig = {
     clamp: null,
   },
 };
-
-// ─────────────────────────────────────────────
-// 5. 유틸리티
-// ─────────────────────────────────────────────
+function getTabletClamp() {
+  const totalAngle = (cardCount - 1) * getAngle();
+  return [-totalAngle / 2, totalAngle / 2]; // 항상 카드 수 기준으로 계산
+}
 
 function applyTransform(rotation) {
-  const { clamp, rotateAxis, translateZ } = modeConfig[currentSize];
+  // const { clamp, rotateAxis, translateZ } = modeConfig[currentSize];
+  const { rotateAxis, translateZ } = modeConfig[currentSize];
 
-  if (clamp) rotation = Math.max(clamp[0], Math.min(clamp[1], rotation));
+  // if (clamp) rotation = Math.max(clamp[0], Math.min(clamp[1], rotation));
+  if (currentSize === "tablet") {
+    const [min, max] = getTabletClamp();
+    rotation = Math.max(min, Math.min(max, rotation));
+  }
 
   workList.style.transform = `translateZ(${translateZ}px) rotate${rotateAxis}(${rotation}deg)`;
 }
@@ -452,9 +457,7 @@ function shortestPath(from, to) {
   return from + diff;
 }
 
-// ─────────────────────────────────────────────
-// 6. 카드 배치
-// ─────────────────────────────────────────────
+// work_카드 배치
 function layoutCards() {
   const angle = getAngle();
   const { rotateAxis, cardTranslateZ } = modeConfig[currentSize];
@@ -470,9 +473,7 @@ function layoutCards() {
   });
 }
 
-// ─────────────────────────────────────────────
-// 7. 카드 클릭
-// ─────────────────────────────────────────────
+// work_카드 클릭
 function attachCardClicks() {
   const angle = getAngle();
   const handlers = [];
@@ -486,20 +487,8 @@ function attachCardClicks() {
         target = shortestPath(state.currentRotation, -(i * angle));
 
       if (currentSize === "tablet") {
-        // target = Math.max(
-        //   -60,
-        //   Math.min(60, -(-60 + (cardCount - 1 - i) * angle)),
-        // );
         let tabletAngle = -60 + (cardCount - 1 - i) * angle;
         target = Math.max(-60, Math.min(60, -tabletAngle));
-
-        console.log(tabletAngle);
-        console.log(target);
-
-        console.log("currentSize:", currentSize);
-        console.log("state.currentRotation 적용 전:", state.currentRotation);
-
-        //  state.lastScrollRotation = state.currentRotation + 60;
       }
 
       if (currentSize === "mobile")
@@ -519,9 +508,7 @@ function attachCardClicks() {
     cards.forEach((card, i) => card.removeEventListener("click", handlers[i]));
 }
 
-// ─────────────────────────────────────────────
-// 8. 스크롤
-// ─────────────────────────────────────────────
+// work_카드 스크롤
 function createScrollHandler() {
   return () => {
     if (isResizing) return;
@@ -550,9 +537,7 @@ function createScrollHandler() {
   };
 }
 
-// ─────────────────────────────────────────────
-// 9. 드래그
-// ─────────────────────────────────────────────
+// work_카드 드래그
 function createDragHandlers() {
   const onMouseDown = (e) => {
     state.isDragging = true;
@@ -600,9 +585,7 @@ function createDragHandlers() {
   return { onMouseDown, onMouseMove, onMouseUp };
 }
 
-// ─────────────────────────────────────────────
-// 10. 이벤트 등록 / 해제
-// ─────────────────────────────────────────────
+// 이벤트
 function attachEvents(onScroll, drag) {
   // tablet: workWrap이 pointer-events:none → mousedown을 workSection에서 수신
   const dragTarget = currentSize === "tablet" ? workSection : workWrap;
@@ -620,9 +603,6 @@ function attachEvents(onScroll, drag) {
   };
 }
 
-// ─────────────────────────────────────────────
-// 11. 디바이스 감지 & 모드 전환
-// ─────────────────────────────────────────────
 let currentSize = null;
 let workClean = null;
 let isResizing = false;
@@ -650,16 +630,15 @@ BP.tablet.addEventListener("change", handleDeviceChange);
 BP.mobile.addEventListener("change", handleDeviceChange);
 handleDeviceChange();
 
-// ─────────────────────────────────────────────
-// 12. 모드 초기화
-// ─────────────────────────────────────────────
+// work_초기화
 function initMode() {
   console.log(`▶ ${currentSize} mode`);
 
   // tablet 진입 시: 첫 카드(-60도)가 보이도록 초기화
   // workWrap pointer-events:none → 클릭이 카드까지 통과
   if (currentSize === "tablet") {
-    state.currentRotation = -60;
+    const [min] = getTabletClamp();
+    state.currentRotation = min;
     state.lastScrollRotation = 0;
     applyTransform(state.currentRotation);
     workWrap.style.pointerEvents = "none";
@@ -679,9 +658,7 @@ function initMode() {
   };
 }
 
-// ─────────────────────────────────────────────
-// 13. 리사이즈
-// ─────────────────────────────────────────────
+// 리사이즈 대응
 window.addEventListener("resize", () => {
   isResizing = true;
   clearTimeout(resizeTimer);
@@ -691,9 +668,6 @@ window.addEventListener("resize", () => {
   }, 200);
 });
 
-// ─────────────────────────────────────────────
-// 14. syncScrollRotation — 리사이즈 후 스크롤 위치 재동기화
-// ─────────────────────────────────────────────
 function syncScrollRotation() {
   const rect = workSection.getBoundingClientRect();
   const sectionHeight = rect.height - window.innerHeight;
@@ -707,7 +681,8 @@ function syncScrollRotation() {
   if (currentSize === "mobile") scrollRotation = (1 - p) * 360;
 
   if (currentSize === "tablet") {
-    state.currentRotation = scrollRotation - 60; // 0~120 → -60~60
+    const [min] = getTabletClamp();
+    state.currentRotation = scrollRotation + min;
   } else {
     state.currentRotation = scrollRotation;
   }
@@ -788,7 +763,7 @@ designUl.addEventListener(
   true,
 );
 
-// 또는 li들이 서로 인접해있을 경우를 대비한 추가 처리
+// li들이 서로 인접해있을 경우 추가 처리
 designUl.addEventListener("mouseover", (e) => {
   let designLi = e.target.closest("li.on");
   if (!designLi || !designLi.classList.contains("on")) {
@@ -800,22 +775,13 @@ designUl.addEventListener("mouseover", (e) => {
 function previewSize(img) {
   let ratio = img.naturalWidth / img.naturalHeight;
 
-  // 가로가 긴 이미지 (ratio > 1)
   if (ratio > 1) {
     designPreview.style.width = "clamp(450px,50%,600px)";
     // designPreview.style.height = 'auto';
-  }
-
-  // 세로가 긴 이미지 (ratio < 1)
-  else if (ratio < 1) {
+  } else if (ratio < 1) {
     designPreview.style.width = "clamp(330px,40%,450px)";
-    // designPreview.style.height = '500px';
-  }
-
-  // 정사각형에 가까운 이미지
-  else {
+  } else {
     designPreview.style.width = "clamp(350px,40%,450px)";
-    // designPreview.style.height = 'auto';
   }
 }
 
@@ -827,34 +793,32 @@ ScrollTrigger.matchMedia({
       x: "-5vw",
       scale: 0.6,
       ease: "none",
-    }); // 라스트 최종 : -300vh
+    });
     gsap.set(
       $("#design li").eq(1),
-      { y: "-230vh", x: "10vw", scale: 1, ease: "none" }, // 라스트 최종 : -270vh
+      { y: "-230vh", x: "10vw", scale: 1, ease: "none" },
       "-=95%",
     );
     gsap.set(
       $("#design li").eq(3),
-      { y: "-350vh", x: "20vw", scale: 0.4, ease: "none" }, // -200vh 20vw
-      "-=85%", // -=85%
+      { y: "-350vh", x: "20vw", scale: 0.4, ease: "none" },
+      "-=85%",
     );
     gsap.set(
       $("#design li").eq(2),
-      { y: "-230vh", x: "-5vw", scale: 0.8, ease: "none" }, // -200vw 1vw // 라스트 최종 : -250vh
+      { y: "-230vh", x: "-5vw", scale: 0.8, ease: "none" },
       "-=85%",
     );
     gsap.set(
       $("#design li").eq(5),
-      { y: "-360vh", x: "0vw", scale: 0.5, ease: "none" }, // -180vh
+      { y: "-360vh", x: "0vw", scale: 0.5, ease: "none" },
       "-=85%",
     );
     gsap.set(
       $("#design li").eq(4),
-      { y: "-300vh", x: "-30vw", scale: 1, ease: "none" }, // -150vh -20vw
+      { y: "-300vh", x: "-30vw", scale: 1, ease: "none" },
       "-=95%",
     );
-    // eq 345는 기존에서 y값을 -100vh 더 넣었음
-    // eq 전체에 y값을 -50vh 추가로 더 넣었음
 
     // design_이미지 스크롤 트리거
     let endY = window.innerHeight * 2.7;
@@ -863,29 +827,17 @@ ScrollTrigger.matchMedia({
       .timeline({
         scrollTrigger: {
           trigger: "#design",
-          // start: "top top",
           start: "top 20%",
-          // end: "bottom bottom",
-          // end: "bottom 95%",
-          // end: `bottom-=${endY} bottom`, // 그나마 이거
-
-          // end: "+=2400",
           end: `+=${endY}`,
           pin: "#design .pin p",
           pinSpacing: false,
           scrub: 1,
-          // toggleActions: "play none reverse none",
-          // markers: true,
 
           onUpdate: (self) => {
             let designLis = document.querySelectorAll("#design li");
 
             let rect = designUl.getBoundingClientRect();
-            if (
-              // rect.bottom < 0 ||
-              rect.top > window.innerHeight &&
-              self.direction === -1
-            ) {
+            if (rect.top > window.innerHeight && self.direction === -1) {
               designLis.forEach((li) => li.classList.remove("on"));
               again = true;
               console.log("again1");
@@ -1046,12 +998,9 @@ ScrollTrigger.matchMedia({
     gsap
       .timeline({
         scrollTrigger: {
-          // trigger: "._s._about .s4",
           trigger: "#design",
           start: "-5% top",
-          // toggleActions: "play reverse play reverse",
           toggleActions: "play complete play reset",
-          // markers: true,
         },
       })
       .to("#design .pin p", {
@@ -1066,21 +1015,11 @@ ScrollTrigger.matchMedia({
         clearProps: "all",
         onStart: () => {
           $("#design li").addClass("on");
-          console.log("li 애니메이션 시작!");
         },
       });
   },
 });
 
-//
-//
-//
-
-// }
-
-//
-//
-//
 //
 
 // contact 섹션
@@ -1127,9 +1066,9 @@ let blocks = document.querySelectorAll("#contact .block");
 
 let blockRect = blockBox.getBoundingClientRect();
 
-let total = blocks.length;
-let cols = Math.ceil(Math.sqrt(total));
-let rows = Math.ceil(total / cols);
+let blockTotal = blocks.length;
+let cols = Math.ceil(Math.sqrt(blockTotal));
+let rows = Math.ceil(blockTotal / cols);
 
 let cellW = blockRect.width / cols;
 let cellH = blockRect.height / rows;
@@ -1141,9 +1080,6 @@ for (let r = 0; r < rows; r++) {
     cells.push({ r, c });
   }
 }
-
-// block 초기 위치 저장
-let blockData = [];
 
 // 랜덤 섞기
 cells.sort(() => Math.random() - 0.5);
@@ -1160,26 +1096,14 @@ blocks.forEach((block, i) => {
   block.style.height = `${size * 0.5}px`;
   block.style.left = `${x}px`;
   block.style.top = `${y}px`;
-
-  blockData.push({
-    el: block,
-    x: block.offsetLeft,
-    y: block.offsetTop,
-  });
 });
 
 // contact_카드 이동 거리
 let contactCard = document.querySelector("#contact .card");
-let contactCardStart = window.innerWidth; // 화면 오른쪽 밖
-let contactCardEnd = (window.innerWidth - contactCard.offsetWidth) / 2;
 
 // 스크롤 따라 움직임
 let contact = document.querySelector("#contact");
 let contactWrap = contact.querySelector(".wrap");
-
-let contactHeight = contact.offsetHeight;
-let lastScrollY = window.scrollY;
-let blockOffset = 0;
 
 let cardReady = false;
 let cardReadyTimer = null;
@@ -1187,21 +1111,11 @@ let cardReadyTimer = null;
 let contactTrigger = gsap.timeline({
   scrollTrigger: {
     trigger: "#contact",
-    // trigger: "#contact .wrap",
 
     start: "top bottom",
-    // end: "+=800", // contact 끝까지
-    // end: "bottom bottom", // contact 끝까지
-    // end: "80% bottom", // contact 끝까지
     end: () => "+=" + window.innerHeight,
-    // end: () => "+=" + (contactWrap.offsetHeight - contactCard.offsetHeight),
 
     scrub: true, // 스크롤과 연동
-    // scrub: 3, // 스크롤과 연동
-    // snap: 1,
-    // toggleActions: "play none none reverse",
-    // invalidateOnRefresh: true, // ✅ 추가
-    // markers: true,
 
     onUpdate: (self) => {
       if (self.progress >= 0.99) {
@@ -1221,7 +1135,7 @@ contactTrigger
   .to(
     "#contact .block",
     {
-      x: -30, // 이동 거리
+      x: -30,
       ease: "none",
     },
     0,
@@ -1229,9 +1143,9 @@ contactTrigger
   .fromTo(
     // contactCard,
     "#contact .cardWrap",
-    { x: window.innerWidth }, // 화면 오른쪽 밖
+    { x: window.innerWidth },
     {
-      x: 0, // 중앙
+      x: 0,
     },
     0,
   );
@@ -1246,11 +1160,6 @@ contactCard.addEventListener("mouseenter", () => {
 contactCard.addEventListener("mouseleave", () => {
   contactCard.classList.remove("ani");
 });
-//
-//
-//
-//
-//
 
 //
 
@@ -1273,7 +1182,7 @@ $(window).on("scroll", function () {
         $(".fixNavi li").removeClass("on");
         $(".fixNavi li").eq(i).addClass("on");
       }
-      return false; // 🔥 여기서 멈춤
+      return false;
     }
   });
 });
@@ -1287,26 +1196,6 @@ fixLi.on("click", function () {
     // contact 섹션(마지막)일 때만 refresh
     if (i === sections.length - 1) {
       ScrollTrigger.refresh();
-
-      // 전체 refresh 대신 contact 트리거만 업데이트
-      // ScrollTrigger.getAll().forEach((trigger) => {
-      //   if (trigger.trigger === document.querySelector("#contact")) {
-      //     // trigger.refresh();
-      //     trigger.progress(1, false);
-      //   }
-      // });
     }
   });
 });
-
-// about 절반 지나면 버튼 등장 ---> 할말 고민
-
-// $(window).on("scroll", function () {
-//   let scroll = $(window).scrollTop();
-//   let aboutHeight = $("#about").outerHeight();
-//   if (scroll > aboutHeight / 3) {
-//     $(".fixNavi").css({ display: "block" });
-//   } else {
-//     $(".fixNavi").css({ display: "none" });
-//   }
-// });
